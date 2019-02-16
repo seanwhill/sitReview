@@ -1,0 +1,39 @@
+<div>
+	<a href = "/feed">Return to feed</a>
+	<a href = "/logout">Logout</a>
+	<ul>
+		<li>Username: {{profile.username}}</li>
+		<li>Name: {{profile.name}}</li>
+		<li>Local: {{profile.local}}</li>
+		<li>State: {{profile.state}}</li>
+		<li>Region: {{profile.region}}</li>
+	</ul>
+	<h2>Clout level: {{cloutLevel}} {{cloutSymbol}}</h2>
+	<p>Total victories: {{victories}}</p>
+	<ul>
+		<li>Total local votes: {{totalLocalVotes}}</li>
+		<li>Total state votes: {{totalStateVotes}}</li>
+		<li>Total regional votes: {{totalRegionalVotes}}</li>
+		<li>Total national votes: {{totalNationalVotes}}</li>
+		<li>Total votes for all time: {{totalVotesEver}}</li>
+	</ul>
+	<h2>Remaining Votes</h2>
+	<ul>
+		<li>Votes for local: {{vote_local}}</li>
+		<li>Votes for state: {{vote_state}}</li>
+		<li>Votes for regional: {{vote_regional}}</li>
+		<li>Votes for national: {{vote_national}}</li>
+	</ul>
+	<h2>Posts</h2>
+	<ul>
+		{{#each uploads}}
+			<article class = "post">
+				<img src="data:image/png;base64, {{data}}" alt="Picc" />
+				<p>Local votes: {{vote_local}}</p>
+				<p>State votes: {{vote_state}}</p>
+				<p>Regional votes: {{vote_regional}}</p>
+				<p>National votes: {{vote_national}}</p>
+			</article>
+		{{/each}}
+	</ul>
+</div>

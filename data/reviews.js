@@ -84,13 +84,13 @@ let exportedMethods = {
     async getReviewsByCourse(course){
         const reviewCollection = await reviews();
         const review_list = await reviewCollection.find({course: course}).toArray();
-        return review_list
+        return review_list;
     },
     // Returns a list of all the reviews posted by a particular owner
     async getReviewsByowner(ownerId){
         const reviewCollection = await reviews();
         const review_list = await reviewCollection.find({ownerId: ownerId}).toArray();
-        return review_list
+        return review_list;
     }
 };
 

@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const users = require("../data/users");
+const reviews = require("../data/reviews");
 
 router.get("/", async (req, res) => {
 	const sid = req.cookies.AuthCookie;
 	let user = null;
-	
+
 	try {
 		user = await users.getUserBySession(sid);
 		console.log(user)
@@ -14,13 +15,19 @@ router.get("/", async (req, res) => {
 	}
 	
 
-	(user == null ? auth=true : auth=false)
-	if (auth == false) {
-		let profile = user.profile;
+	(user == null ? auth=false : auth=true)
+	if (auth) {
+		let review_list = []
+		let courses = user.profile.courses
+		for (var i = 0; i < courses.length; i++){
+			review_list.push(await reviews.getReviewsByCourse(courses[i]));
+		}
 
+		console.log(review_list)
 		let data = {
 			title: "Dashboard",
-			
+			courses: courses,
+			reviews: review_list,	
 		}
 		res.render("dashboard", data);
 	} else {

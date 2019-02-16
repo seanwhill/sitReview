@@ -1,1 +1,14 @@
-<h1>Phew! The dashboard works!</h1>
+<section> 
+	<a href = "/profile">Profile</a>
+	<a href = "/logout">Logout</a>
+	<br>
+	{{#each courses}}
+        <p>{{this}}</p>
+	{{/each}}
+    <br>
+    {{#each reviews}}
+        {{#each this }}
+            <p>{{course}}</p>
+        {{/each}}
+    {{/each}}
+</section>

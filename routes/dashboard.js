@@ -38,20 +38,9 @@ router.get("/", async (req, res) => {
 		var curr = new Date; // get current date
 		for (var i = 0; i < courses.length; i++){
 			var temp = await reviews.getReviewsByCourse(courses[i])
-			console.log(temp)
 			for (var j = 0; j < temp.length; j++){
 				review = temp[j]
 				var rev_date = new Date(review.date+'T12:00:00');
-				// console.log(review)
-				// console.log(rev_date)
-				// console.log(firstday)
-				// // console.log(lastday)
-				// // console.log(rev_date.valueOf() >= firstday.valueOf())
-				// // console.log(rev_date.valueOf() <= lastday.valueOf())
-				// console.log(firstday_next)
-				// console.log(lastday_next)
-				// console.log(rev_date >= firstday_next)
-				// console.log(rev_date <= lastday_next)
 
 
 				if (rev_date.valueOf() >= firstday.valueOf() && rev_date.valueOf() <= lastday.valueOf())

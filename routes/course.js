@@ -55,7 +55,7 @@ router.post("/:course", async (req, res) => {
         userCourses.push(course);
         let updatedUser = {profile: user.profile};
         let newUser = await users.updateUser(userId, updatedUser);
-        res.render("success", {title: "Course successfully added"});
+        res.render("success", {title: "Course successfully added!"});
     }
 });
 

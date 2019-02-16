@@ -44,10 +44,6 @@ router.get("/", async (req, res) => {
 		for (var i = 0; i < courses.length; i++){
 			review_list.push(await reviews.getReviewsByCourse(courses[i]));
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> 40fe85ce95d182bdaf7258e09736e20c97b9763e
 		let data = {
 			title: "Dashboard",
 			courses: courses,

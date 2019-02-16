@@ -9,22 +9,11 @@ let exportedMethods = {
     async getReviewById(id) {
         const reviewCollection = await reviews();
         const review = await reviewCollection.findOne({ _id: id });
-
-<<<<<<< HEAD
-    async getReviewById(id) {
-        const reviewCollection = await reviews();
-        const review = await reviewCollection.findOne({ _id: id });
-
-        if (!review) throw "review not found";
-        return review;
-    },
-    
-=======
+        
         if (!review) throw "review not found";
         return review;
     },
     // Adds a new review to the collection with the given information
->>>>>>> 40fe85ce95d182bdaf7258e09736e20c97b9763e
     async addReview(title, course, description, location, date, startTime, ownerId) {
 
         const reviewCollection = await reviews();

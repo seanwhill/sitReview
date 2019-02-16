@@ -46,6 +46,7 @@ router.post("/", async (req, res) => {
 	// Add a new review to the collection
 	await reviews.addReview(title, course, description, location, date, startTime, creatorId);
 	// Redirect to success page
-    res.redirect("/dashboard");
+	res.render("success", {title: "Review successfully submitted"});
+    //res.redirect("/dashboard");
 });
 module.exports = router;

@@ -23,36 +23,32 @@
             <div class = "col-sm-8">
                 <div class = "container-fluid">
                     <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <h1>This Week</h1>
-                                </thead>
-                                <tbody>
-                                    {{#each reviews}}
-                                        {{#each this }}
-                                        <tr>
-                                            <td height="100" type="text">{{course}}</td>
-                                        </tr>
-                                        {{/each}}
-                                    {{/each}}
-                                <tbody>
-                            </table>
-                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <h1>This Week</h1>
+                            </thead>
+                            <tbody>
+                                {{#each reviews_this}}
+                                    <tr>
+                                        <td height="100">{{this.date}} {{this.course}}</td>
+                                    </tr>
+                                {{/each}}
+                            <tbody>
+                        </table>
                     </div>
+                </div>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <h1>Next Week</h1>
-                                <tbody>
-                                    {{#each reviews}}
-                                        {{#each this }}
-                                        <tr>
-                                            <td height = "100" type ="text">{{course}}</td>
-                                        </tr>
-                                        {{/each}}
-                                    {{/each}}
-                                <tbody>
                             </thead>
+                            <tbody>
+                                {{#each reviews_next}}
+                                    <tr>
+                                        <td height = "100"> {{this.date}} {{this.course}} </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
                         </table>
                     </div>
                 </div>

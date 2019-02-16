@@ -21,9 +21,22 @@ const main = async () => {
   let hash = await bcrypt.hash(pw, saltRounds);
 
   const sean = await users.addUser(un1, name1, hash)
+  users.updateUser(sean._id,{
+    profile : {
+      name: sean.profile.name,
+      username: sean.profile.username,
+      courses: ["Ma222", "Cs115"],
+      createdReviews: sean.profile.createdReviews,
+    }
+  })
   const jord = await users.addUser(un2, name2, hash);
 
-  const rev1 = await reviews.addReview("Test Review", "Cs 115", "Prepare for the upcoming exam", "NB 102", "2019-19-2", "3:00pm", sean.profile.id)
+  const rev1 = await reviews.addReview("Test Review", "Cs115", "Prepare for the upcoming exam", "NB 102", "2019-02-16", "15:00", sean.profile.id)
+
+  const rev2 = await reviews.addReview("Test Review", "Cs115", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "15:00", sean.profile.id)
+
+  const rev3 = await reviews.addReview("Test Review", "Ma222", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "19:00", sean.profile.id)
+
   await db.serverConfig.close();
 
 };

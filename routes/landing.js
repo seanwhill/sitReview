@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     } catch (e) {
     	auth = false;
     }
-
+    
     if (auth) { // user is authenticated
     	res.redirect("/dashboard");
     } else {

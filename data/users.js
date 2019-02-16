@@ -15,7 +15,6 @@ let exportedMethods = {
   async checkUserExists(un) {
     const userCollection = await users();
     const user = await userCollection.findOne({ 'profile.username': un });
-    console.log(user)
     if (!user) return false;
     return true;
   },
@@ -36,8 +35,6 @@ let exportedMethods = {
   async addSession(un, sid) {
     try {
       let user = await this.getUserByUn(un);
-      console.log("adding sid to")
-      console.log(user)
       user.sessionIds.push(sid);
       this.updateUser(user._id, user);
     } catch (e) {
@@ -75,7 +72,6 @@ let exportedMethods = {
     return user;
   },
   async addUser(username, name, hashedPassword) {
-    console.log("adding user")
     if (typeof hashedPassword !== "string") throw "No hashed password provided";
     if (typeof name !== "string") throw "No name provided!";
     if (typeof username !== "string") throw "No username provided!";
@@ -96,7 +92,6 @@ let exportedMethods = {
 
     const newInsertInformation = await usersCollection.insertOne(newUser);
     const newId = newInsertInformation.insertedId;
-    console.log(await this.getUserById(newId))
     return await this.getUserById(newId);
   },
   async removeUserById(id) {

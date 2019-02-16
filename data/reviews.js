@@ -6,28 +6,31 @@ const uuid = require("node-uuid");
 
 let exportedMethods = {
 
-    async addReview(title, time, course, location, ownerId) {
-
-        const reviewCollection = await reviews();
-        const newRev = {
-            _id: uuid.v4(),
-            title: title,
-            time: time,
-            course: course,
-            location: location,
-            ownerId: ownerId,
-        };
-
-        const newInsertInformation = await reviewCollection.insertOne(newRev);
-        const newId = newInsertInformation.insertedId;
-        return await this.getReviewbyId(newId);
-    },
     async getReviewById(id) {
         const reviewCollection = await reviews();
         const review = await reviewCollection.findOne({ _id: id });
 
         if (!review) throw "review not found";
         return review;
+    },
+    
+    async addReview(title, course, description, location, date, startTime, ownerId) {
+
+        const reviewCollection = await reviews();
+        const newRev = {
+            _id: uuid.v4(),
+            title: title,
+            course: course,
+            description: description,
+            location: location,
+            date: date,
+            startTime: startTime,
+            ownerId: ownerId,
+        };
+
+        const newInsertInformation = await reviewCollection.insertOne(newRev);
+        const newId = newInsertInformation.insertedId;
+        return await this.getReviewById(newId);
     },
     async removeReviewById(id) {
         const reviewCollection = await reviews();
@@ -70,7 +73,6 @@ let exportedMethods = {
     async getReviewsByCourse(course){
         const reviewCollection = await reviews();
         const review_list = await reviewCollection.find({course: course}).toArray();
-        console.log(review_list)
         return review_list
     },
     async getReviewsByowner(ownerId){

@@ -1,14 +1,63 @@
-<section> 
-	<a href = "/profile">Profile</a>
-	<a href = "/logout">Logout</a>
-	<br>
-	{{#each courses}}
-        <p>{{this}}</p>
-	{{/each}}
+<section>
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a>
     <br>
-    {{#each reviews}}
-        {{#each this }}
-            <p>{{course}}</p>
-        {{/each}}
-    {{/each}}
+    <h1>Hi</h1>
+    <div class = "container-fluid"
+        <div class = "row">
+            <div class = "col-sm-4">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <h1>Courses</h1>
+                        </thead>
+                        <tbody>
+                            {{#each courses}}
+                                <tr>
+                                    <td height = "100" type="text">{{this}}</td>
+                                </tr>
+                            {{/each}}
+                        <tbody>
+                    </table>
+                </div>
+            </div>
+            <div class = "col-sm-8">
+                <div class = "container-fluid">
+                    <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <h1>This Week</h1>
+                                </thead>
+                                <tbody>
+                                    {{#each reviews}}
+                                        {{#each this }}
+                                        <tr>
+                                            <td height="100" type="text">{{course}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    {{/each}}
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <h1>Next Week</h1>
+                                <tbody>
+                                    {{#each reviews}}
+                                        {{#each this }}
+                                        <tr>
+                                            <td height = "100" type ="text">{{course}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    {{/each}}
+                                <tbody>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

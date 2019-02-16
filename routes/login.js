@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
 		const sid = uuid();
 		res.cookie("AuthCookie", sid);
 		try {
-			console.log("here")
 			await users.addSession(un, sid);
 		} catch (e) {
 			throw(e);

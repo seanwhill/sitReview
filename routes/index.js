@@ -4,6 +4,7 @@ const profileRoute = require("./profile");
 const logoutRoute = require("./logout");
 const signupRoute = require("./signup");
 const dashboardRoute = require("./dashboard");
+const submitReviewRoute = require("./submitReview");
 
 
 
@@ -14,6 +15,7 @@ function constructorMethod(app) {
 	app.use("/logout", logoutRoute);
 	app.use("/signup", signupRoute);
 	app.use("/dashboard", dashboardRoute);
+	app.use("/submitReview", submitReviewRoute);
 
 	app.use("*", (req, res) => {
     	res.redirect("/");

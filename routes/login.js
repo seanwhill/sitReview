@@ -35,7 +35,6 @@ router.post("/", async (req, res) => {
 		}
 		// Redirect to dashboard page
 		else {
-			//res.render("root", {title: "Error", error: "logged in"});
 			res.redirect("/dashboard");
 		}
 	} else {

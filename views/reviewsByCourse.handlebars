@@ -1,5 +1,12 @@
-<p>All reviews for {{title}} will be displayed here.</p>
-
+<p>All reviews for {{title}} will be displayed here. Clicking Subscribe will 
+    display this course's reviews on your dashboard.
+</p>
+<!-- form for subscribing to courses -->
+<form id = "subscribe-form" method = "post" action = "/course/{{title}}">
+    <button type = "submit">Subscribe</button>
+</form>
+<!-- Displays that classes reviews -->
+<h2>Reviews</h2>
 {{#each review}}
     <p>Title: {{title}}, Description: {{description}}, Location: {{location}}, 
         Date: {{date}}, Start time: {{startTime}}, Creator name: {{creatorName}}</p>

@@ -3,7 +3,7 @@ const router = express.Router();
 const reviews = require("../data/reviews");
 const users = require("../data/users");
 
-// Route for displaying all reviews by course
+// Route for displaying all reviews by course, assumes user is logged in
 router.get("/:course", async (req, res) => {
     try {
         let course = req.params.course;
@@ -34,6 +34,30 @@ router.get("/:course", async (req, res) => {
         res.status(404).json({ message: "Course not found" });
     }
   });
+
+router.post("/:course", async (req, res) => {
+    let course = req.params.course;
+    // Gets session id, will be undefined if user is not logged in
+    let sid = req.cookies.AuthCookie;
+    let user = await users.getUserBySession(sid);
+    let userId = user._id;
+    let userCourses = user.profile.courses;
+    // User has already subscribed to that course
+    if (userCourses.includes(course)) {
+        let data = {
+            title: "Error 403",
+            issue: "You have already added this course."
+        }
+        res.status(403).render("error", data);
+    }
+    // Add course to user's list
+    else {
+        userCourses.push(course);
+        let updatedUser = {profile: user.profile};
+        let newUser = await users.updateUser(userId, updatedUser);
+        res.render("success", {title: "Course successfully added"});
+    }
+});
 
 // Oof, this line is important
 module.exports = router;

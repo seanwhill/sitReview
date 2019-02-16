@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
 	try {
 		user = await users.getUserBySession(sid);
 	} catch (e) {
-		//throw (e);
+		
 	}
 	
 	(user == null ? auth=true : auth=false)

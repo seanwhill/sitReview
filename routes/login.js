@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
 		const sid = uuid();
 		res.cookie("AuthCookie", sid);
 		try {
-			console.log("here")
 			await users.addSession(un, sid);
 		} catch (e) {
 			throw(e);
@@ -36,7 +35,6 @@ router.post("/", async (req, res) => {
 		}
 		// Redirect to dashboard page
 		else {
-			//res.render("root", {title: "Error", error: "logged in"});
 			res.redirect("/dashboard");
 		}
 	} else {

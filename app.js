@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.use("/css", static);
-app.use(express.static('resources'));
+// app.use("/css", static);
+// app.use(express.static('resources'));
 
 app.use("/public", static2);
 app.use(express.static('resources'));

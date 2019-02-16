@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
 
 	try {
 		user = await users.getUserBySession(sid);
-		console.log(user)
 	} catch (e) {
 		//throw (e);
 	}
@@ -23,7 +22,6 @@ router.get("/", async (req, res) => {
 			review_list.push(await reviews.getReviewsByCourse(courses[i]));
 		}
 
-		console.log(review_list)
 		let data = {
 			title: "Dashboard",
 			courses: courses,

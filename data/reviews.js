@@ -5,23 +5,7 @@ const uuid = require("node-uuid");
 
 
 let exportedMethods = {
-
-    async addReview(title, time, course, location, ownerId) {
-
-        const reviewCollection = await reviews();
-        const newRev = {
-            _id: uuid.v4(),
-            title: title,
-            time: time,
-            course: course,
-            location: location,
-            ownerId: ownerId,
-        };
-
-        const newInsertInformation = await reviewCollection.insertOne(newRev);
-        const newId = newInsertInformation.insertedId;
-        return await this.getReviewbyId(newId);
-    },
+    // Returns the given review based on the ID
     async getReviewById(id) {
         const reviewCollection = await reviews();
         const review = await reviewCollection.findOne({ _id: id });
@@ -29,6 +13,26 @@ let exportedMethods = {
         if (!review) throw "review not found";
         return review;
     },
+    // Adds a new review to the collection with the given information
+    async addReview(title, course, description, location, date, startTime, ownerId) {
+
+        const reviewCollection = await reviews();
+        const newRev = {
+            _id: uuid.v4(),
+            title: title,
+            course: course,
+            description: description,
+            location: location,
+            date: date,
+            startTime: startTime,
+            ownerId: ownerId,
+        };
+
+        const newInsertInformation = await reviewCollection.insertOne(newRev);
+        const newId = newInsertInformation.insertedId;
+        return await this.getReviewById(newId);
+    },
+    // Removes a review from the collection based on the ID
     async removeReviewById(id) {
         const reviewCollection = await reviews();
         const deletionInfo = await reviewCollection.removeOne({ _id: id });
@@ -36,23 +40,32 @@ let exportedMethods = {
             throw `Could not delete review with id of ${id}`;
         }
     },
+    // Changes an existing review based on what the user wants to change
     async updateReview(id, updatedReview) {
         const reviewCollection = await reviews();
 
         const updatedReviewData = {};
-
+        // Update title
         if (updatedReview.title) {
             updatedReviewData.title= updatedReview.title;
         }
-
-        if (updatedReview.time) {
-            updatedReviewData.time= updatedReview.time;
+        // Update description
+        if (updatedReview.description) {
+            updatedReviewData.description = updatedReview.description;
         }
-
+        // Update date
+        if (updatedReview.date) {
+            updatedReviewData.date = updatedReview.date;
+        }
+        // Update start time
+        if (updatedReview.startTime) {
+            updatedReviewData.startTime= updatedReview.startTime;
+        }
+        // Update course
         if (updatedReview.course) {
             updatedReviewData.course= updatedReview.course;
         }
-
+        // Update location
         if (updatedReview.location) {
             updatedReviewData.location= updatedReview.location;
         }
@@ -67,12 +80,13 @@ let exportedMethods = {
 
         return await this.getUserById(id);
     },
+    // Returns a list of all the reviews for a particular course
     async getReviewsByCourse(course){
         const reviewCollection = await reviews();
         const review_list = await reviewCollection.find({course: course}).toArray();
-        console.log(review_list)
         return review_list
     },
+    // Returns a list of all the reviews posted by a particular owner
     async getReviewsByowner(ownerId){
         const reviewCollection = await reviews();
         const review_list = await reviewCollection.find({ownerId: ownerId}).toArray();

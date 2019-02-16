@@ -6,7 +6,6 @@ const uuid = require("node-uuid");
 
 
 let exportedMethods = {
-  // Gabby's original methods
   async getUserByUn(un) {
     const userCollection = await users();
     const user = await userCollection.findOne({ 'profile.username': un });
@@ -64,7 +63,6 @@ let exportedMethods = {
   async getUserBySession(sid) {
     const userCollection = await users();
     const user = await userCollection.findOne({ sessionIds: { $all: [sid] } });
-
     if (!user) throw "User not found";
     return user;
   },
@@ -76,6 +74,7 @@ let exportedMethods = {
     return user;
   },
   async addUser(username, name, hashedPassword) {
+    console.log("adding user")
     if (typeof hashedPassword !== "string") throw "No hashed password provided";
     if (typeof name !== "string") throw "No name provided!";
     if (typeof username !== "string") throw "No username provided!";
@@ -96,7 +95,7 @@ let exportedMethods = {
 
     const newInsertInformation = await usersCollection.insertOne(newUser);
     const newId = newInsertInformation.insertedId;
-    // Ya gotta change this in your branch
+    console.log(await this.getUserById(newId))
     return await this.getUserById(newId);
   },
   async removeUserById(id) {

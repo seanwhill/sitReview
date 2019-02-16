@@ -5,12 +5,15 @@ const users = require("../data/users");
 router.get("/", async (req, res) => {
 	const sid = req.cookies.AuthCookie;
 	let user = null;
+	
 	try {
 		user = await users.getUserBySession(sid);
+		console.log(user)
 	} catch (e) {
 		//throw (e);
 	}
 	
+
 	(user == null ? auth=true : auth=false)
 	if (auth == false) {
 		let profile = user.profile;

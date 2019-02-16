@@ -36,7 +36,8 @@ let exportedMethods = {
   async addSession(un, sid) {
     try {
       let user = await this.getUserByUn(un);
-
+      console.log("adding sid to")
+      console.log(user)
       user.sessionIds.push(sid);
       this.updateUser(user._id, user);
     } catch (e) {
@@ -123,6 +124,10 @@ let exportedMethods = {
 
     if (updatedUser.profile) {
       updatedUserData.profile = updatedUser.profile;
+    }
+
+    if (updatedUser.sessionIds) {
+      updatedUserData.sessionIds = updatedUser.sessionIds;
     }
 
     let updateCommand = {

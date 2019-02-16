@@ -33,8 +33,10 @@ router.post("/", async (req, res) => {
 		if (un == "admin") {
 			res.redirect("/admin");
 		}
+		// Redirect to dashboard page
 		else {
-			res.render("root", {title: "Error", error: "logged in"});
+			//res.render("root", {title: "Error", error: "logged in"});
+			res.redirect("/dashboard");
 		}
 	} else {
 		res.render("root", {title: "Error", error: err});

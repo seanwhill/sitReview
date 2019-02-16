@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
         else{
             const hash = await bcrypt.hash(pw, saltRounds);
             try{
-                await users.addUser(un, name, hash, local, state, region);
+                await users.addUser(un, name, hash);
             }
             catch(error){
                 console.log(error)

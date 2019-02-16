@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
     }
 
     if (auth) { // user is authenticated
-    	res.redirect("/profile");
+    	res.redirect("/dashboard");
     } else {
-    	res.render("root", {title: "Pickt"});
+    	res.render("root", {title: "SIT Reviews"});
     }
 });
 

@@ -18,6 +18,7 @@ router.get("/", async (req, res) => {
 
 		let data = {
 			title: "Submit Review",
+			layout: main
 			
 		}
 		res.render("submitReview", data);

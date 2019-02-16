@@ -3,21 +3,18 @@ const bodyParser = require("body-parser");
 const configRoutes = require("./routes");
 const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
-const path = require('path');
-const static = express.static(__dirname + "/public");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-// app.use("/css", static);
-// app.use(express.static('resources'));
 
-console.log(__dirname)
+
+app.use(express.static(__dirname + '/public'));
 
 app.use(cookieParser());
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "default" }));
 app.set("view engine", "handlebars");
 configRoutes(app);
 

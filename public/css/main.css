@@ -10,6 +10,26 @@ input[type="text"] {
 	-moz-box-sizing: border-box;
 }
 
+
+.navbar-fixed-top {height: 60px;}
+
+.navbar-brand{
+	color: red
+}
+li{
+	border-right: 1px solid black;
+	color:black;
+}
+
+
+.active a, .dropdown a{
+    color: red !important;
+}
+
+li:last-child {
+    border-right: 1px solid #000;
+}
+
 h1{
 	color: red;
 }

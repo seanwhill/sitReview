@@ -25,16 +25,21 @@ const main = async () => {
   let hash = await bcrypt.hash(pw, saltRounds);
 
   const sean = await users.addUser(un1, name1, hash);
+  console.log("this is sean")  
+  console.log(sean);
+
   await users.updateUser(sean._id,{
+    _id: sean._id,
+    hashedPassword: sean.hashedPassword,
     profile : {
       name: sean.profile.name,
       username: sean.profile.username,
       courses: ["MA222", "CS115"],
       createdReviews: sean.profile.createdReviews,
       savedReviews: []
-    }
+    },
+    sessionIds: sean.sessionIds
   });
-  console.log(sean);
 
   const jord = await users.addUser(un2, name2, hash);
 

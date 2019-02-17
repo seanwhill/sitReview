@@ -117,10 +117,13 @@ let exportedMethods = {
     console.log(updatedUser);
 
     if (updatedUser.hashedPassword) {
+      updatedUserData._id = id
       updatedUserData.hashedPassword = updatedUser.hashedPassword;
     }
 
     if (updatedUser.profile) {
+      console.log("old user")
+      console.log(updatedUser)
       updatedUserData.profile = updatedUser.profile;
     }
 

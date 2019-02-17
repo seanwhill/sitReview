@@ -43,7 +43,6 @@ router.get("/", async (req, res) => {
 				let user = await users.getUserById(review.ownerId);
 				review.owner = user.profile.name;
 				var rev_date = new Date(review.date+'T12:00:00');
-				console.log(review)
 
 				if (rev_date.valueOf() >= firstday.valueOf() && rev_date.valueOf() <= lastday.valueOf())
 					reviews_this.push(review);

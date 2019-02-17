@@ -1,64 +1,67 @@
 <section>
-    <div class="container-fluid" <div class="row">
-        <div class="col-sm-4">
-            <div class="table-responsive">
-                <table id="courses" class="table table-bordered" style="width: 100%;">
-                    <thead>
-                        <h1>Courses</h1>
-                        <p>A list of courses that you are subscribed to</p>
-                    </thead>
-                    <tbody>
-                        {{#each courses}}
-                        <tr onclick="window.location='/course/{{this}}'">
-                            <td height="10" type="text">{{this}}</td>
-                        </tr>
-                        {{/each}}
-                    <tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table id="courses" class="table table-bordered" style="width: 100%;">
                         <thead>
-                            <h1>This Week</h1>
-                            <p>Reviews this week</p>
-                            <p></p>
+                            <h1>Courses</h1>
+                            <p>A list of courses that you are subscribed to</p>
                         </thead>
                         <tbody>
-                            {{#each reviews_this}}
-                            <tr>
-                                <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
-                                    {{this.title}}
-                                    <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
-                                    <br> Created by: {{this.owner}} </td>
-
+                            {{#each courses}}
+                            <tr onclick="window.location='/course/{{this}}'">
+                                <td height="10" type="text">{{this}}</td>
                             </tr>
                             {{/each}}
                         <tbody>
                     </table>
                 </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <h1>Next Week</h1>
-                        <p>Reviews next week</p>
-                    </thead>
-                    <tbody>
-                        {{#each reviews_next}}
-                        <tr>
-                            <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br> {{this.title}}
-                                <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}} <br>
-                                Created by: {{this.owner}} </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+            <div class="col-sm-8">
+                <div class="container-fluid">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <h1>This Week</h1>
+                                <p>Reviews this week</p>
+                                <p></p>
+                            </thead>
+                            <tbody>
+                                {{#each reviews_this}}
+                                <tr>
+                                    <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
+                                        {{this.title}} <br> {{this.location}}
+                                        <br> {{this.date}} <br> Starting at: {{this.startTime}} <br>
+                                        {{this.description}}
+                                        <br> Created by: {{this.owner}} </td>
+
+                                </tr>
+                                {{/each}}
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <h1>Next Week</h1>
+                            <p>Reviews next week</p>
+                        </thead>
+                        <tbody>
+                            {{#each reviews_next}}
+                            <tr>
+                                <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
+                                    {{this.title}}
+                                    <br> {{this.location}} <br>{{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
+                                    <br>
+                                    Created by: {{this.owner}} </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </section>

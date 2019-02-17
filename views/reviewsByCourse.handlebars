@@ -1,22 +1,39 @@
-<h1>{{title}}</h1>
-<p>All reviews for {{title}} will be displayed here. Clicking Subscribe will 
-    display this course's reviews on your dashboard.
-</p>
-{{#unless subscribed}}
-<!-- form for subscribing to courses -->
-<form id = "subscribe-form" method = "post" action = "/course/{{title}}">
-    <button type = "submit">Subscribe</button>
-</form>
-{{else}}
-<!-- form for unsubscribing -->
-<form id = "unsubscribe-form" method = "post" action = "/course/{{title}}/unsubscribe">
-    <button type = "submit">Unsubscribe</button>
-</form>
-{{/unless}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="col-sm-1">
+            {{#unless subscribed}}
+            <!-- form for subscribing to courses -->
+            <form id="subscribe-form" class="sub" method="post" action="/course/{{title}}">
+                <button type="submit">Subscribe</button>
+            </form>
+            {{else}}
+            <!-- form for unsubscribing -->
+            <form id="unsubscribe-form" class="sub" method="post" action="/course/{{title}}/unsubscribe">
+                <button type="submit">Unsubscribe</button>
+            </form>
+            {{/unless}}
+        </div>
+    </div>
 
-<!-- Displays that classes reviews -->
-<h2>Reviews</h2>
-{{#each review}}
-    <p>Title: {{title}}, Description: {{description}}, Location: {{location}}, 
-        Date: {{date}}, Start time: {{startTime}}, Creator name: {{creatorName}}</p>
-{{/each}}
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <h1>Upcoming reviews</h1>
+        </thead>
+        <tbody>
+            {{#each review}}
+            <tr>
+                <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
+                    {{this.title}}
+                    <br> {{this.location}} <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
+                    <br>
+                    Created by: {{this.creatorName}} </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

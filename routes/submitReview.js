@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 
 		let data = {
 			title: "Submit Review",
-			layout: "main"
+			layout: "submit"
 		}
 		res.render("submitReview", data);
 	} else {

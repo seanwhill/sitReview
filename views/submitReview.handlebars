@@ -1,6 +1,6 @@
 <h2>You can submit a review here!</h2>
 
-<form id="submit-form" method="post" action="/submitReview">
+{{!-- <form id="submit-form" method="post" action="/submitReview">
     <!-- Title -->
     <label for = "reviewTitle">Review title: </label>
     <input type="text" name = "reviewTitle" id="reviewTitle" required>
@@ -25,4 +25,33 @@
     <input type = "time" name = "startTime" id = "time" required>
     <!-- Submit -->
     <button type="submit">Submit</button>
+</form> --}}
+
+<form id="submit-form" method="post" action="/submitReview">
+
+    <h1>Submit</h1>
+    <label for = "reviewTitle">Review title: </label>
+    <input type="text" name = "reviewTitle" id="reviewTitle" required>
+    <br>
+    <label for = "course">Course: </label>
+    <select name = "course">
+        <option value = "MA222">MA222</option>
+        <option value = "CS115">CS115</option>
+        <option value = "PEP112">PEP112</option>
+    </select>
+    <br>
+    <label for = "date">Date: </label>
+    <input type="date" name = "date" id = "date" required>
+    <br>
+    <label for = "startTime">Time: </label>
+    <input type = "time" name = "startTime" id = "time" required>
+    <br>
+    <label for = "location">Location: </label>
+    <input type="text" name = "location" id = "location" required>    <br>
+    <br>
+    <label for = "description">Description: </label>
+    <textarea name = "description" id = "description" required></textarea>
+    <br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
 </form>

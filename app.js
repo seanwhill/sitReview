@@ -4,6 +4,7 @@ const configRoutes = require("./routes");
 const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

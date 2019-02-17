@@ -25,18 +25,19 @@ const main = async () => {
     profile : {
       name: sean.profile.name,
       username: sean.profile.username,
-      courses: ["Ma222", "Cs115"],
+      courses: ["MA222", "CS115"],
       createdReviews: sean.profile.createdReviews,
+      savedReviews: []
     }
   })
 
   const jord = await users.addUser(un2, name2, hash);
 
-  const rev1 = await reviews.addReview("Test Review", "Cs115", "Prepare for the upcoming exam", "NB 102", "2019-02-16", "15:00", sean._id)
+  const rev1 = await reviews.addReview("Test Review", "CS115", "Prepare for the upcoming exam", "NB 102", "2019-02-16", "15:00", sean._id)
 
-  const rev2 = await reviews.addReview("Test Review", "Cs115", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "15:00", sean._id)
+  const rev2 = await reviews.addReview("Test Review", "CS115", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "15:00", sean._id)
 
-  const rev3 = await reviews.addReview("Test Review", "Ma222", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "19:00", sean._id)
+  const rev3 = await reviews.addReview("Test Review", "MA222", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "19:00", sean._id)
 
   await db.serverConfig.close();
 

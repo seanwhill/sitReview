@@ -113,6 +113,8 @@ let exportedMethods = {
     const userCollection = await users();
 
     const updatedUserData = {};
+    console.log("updated user:");
+    console.log(updatedUser);
 
     if (updatedUser.hashedPassword) {
       updatedUserData.hashedPassword = updatedUser.hashedPassword;
@@ -125,6 +127,8 @@ let exportedMethods = {
     if (updatedUser.sessionIds) {
       updatedUserData.sessionIds = updatedUser.sessionIds;
     }
+    console.log("updated user data");
+    console.log(updatedUserData);
 
     let updateCommand = {
       $set: updatedUserData

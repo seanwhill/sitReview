@@ -32,14 +32,19 @@
                                 <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
                                     {{this.title}}
                                     <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
-                                    <br> Created by: {{this.owner}} 
+                                    <br> Created by: {{this.owner}} <br>
                                     <!-- One form for rsvp'ing, and another for cancelling -->
+                                    {{#unless this.reserved}}
+                                    You are not reserved for this event.
                                     <form id = "rsvp" method = "post" action = "/dashboard/{{this._id}}">
                                         <button type = "submit">RSVP</button>
                                     </form>
+                                    {{else}}
+                                    You have reserved a spot in this event.
                                     <form id = "cancelReservation" method = "post" action = "/dashboard/{{this._id}}/cancel">
                                         <button type = "submit">Cancel reservation</button>
                                     </form>
+                                    {{/unless}}
                                 </td>
 
                             </tr>
@@ -59,14 +64,17 @@
                         <tr>
                             <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br> {{this.title}}
                                 <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}} <br>
-                                Created by: {{this.owner}} 
+                                Created by: {{this.owner}} <br>Reserved?: {{this.reserved}}
                                 <!-- One form for rsvp'ing, and another for cancelling -->
+                                {{#unless this.reserved}}
                                 <form id = "rsvp" method = "post" action = "/dashboard/{{this._id}}">
                                     <button type = "submit">RSVP</button>
                                 </form>
+                                {{else}}
                                 <form id = "cancelReservation" method = "post" action = "/dashboard/{{this._id}}/cancel">
                                     <button type = "submit">Cancel reservation</button>
                                 </form>
+                                {{/unless}}
                             </td>
                         </tr>
                         {{/each}}

@@ -94,5 +94,29 @@ router.post("/:id", async (req, res) => {
         res.render("success", {title: "Successfully RSVP'd for review!"});
     }
 });
-
+// Opposite of rsvp
+router.post("/:id/cancel", async (req, res) => {
+	let reviewId = req.params.id;
+    // Gets session id, will be undefined if user is not logged in
+    let sid = req.cookies.AuthCookie;
+    let user = await users.getUserBySession(sid);
+    let userId = user._id;
+    let savedReviews = user.profile.savedReviews;
+    // User has already RSVP'd to this review
+    if (savedReviews.includes(reviewId)) {
+		savedReviews.splice(savedReviews.indexOf(reviewId), 1);
+        let updatedUser = {profile: user.profile};
+		let newUser = await users.updateUser(userId, updatedUser);
+		console.log(newUser);
+		res.render("success", {title: "Successfully cancelled reservation!"});
+    }
+    // Error page, has not rsvp'd yet
+    else {
+		let data = {
+            title: "Error 403",
+            issue: "You have not RSVP'd for this review yet. Can you even get here?"
+        }
+        res.status(403).render("error", data);
+    }
+});
 module.exports = router;

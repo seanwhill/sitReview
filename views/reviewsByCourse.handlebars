@@ -4,11 +4,13 @@
 </p>
 {{#unless subscribed}}
 <!-- form for subscribing to courses -->
+<p>You have not subscribed to this class.</p>
 <form id = "subscribe-form" method = "post" action = "/course/{{title}}">
     <button type = "submit">Subscribe</button>
 </form>
 {{else}}
 <!-- form for unsubscribing -->
+<p>You are currently subscribed to this class.</p>
 <form id = "unsubscribe-form" method = "post" action = "/course/{{title}}/unsubscribe">
     <button type = "submit">Unsubscribe</button>
 </form>

@@ -39,14 +39,15 @@ router.get("/", async (req, res) => {
 		for (var i = 0; i < courses.length; i++){
 			var temp = await reviews.getReviewsByCourse(courses[i])
 			for (var j = 0; j < temp.length; j++){
-				review = temp[j]
+				review = temp[j];
 				var rev_date = new Date(review.date+'T12:00:00');
 
 
-				if (rev_date.valueOf() >= firstday.valueOf() && rev_date.valueOf() <= lastday.valueOf())
+				if (rev_date.valueOf() >= firstday.valueOf() && rev_date.valueOf() <= lastday.valueOf()) {
 					reviews_this.push(review);
+				}
 				else if(rev_date.valueOf() >= firstday_next.valueOf() && rev_date.valueOf() <= lastday_next.valueOf()){
-					reviews_next.push(review)
+					reviews_next.push(review);
 				}
 			}
 		}
@@ -65,6 +66,31 @@ router.get("/", async (req, res) => {
 		}
 		res.render("error", data);
 	}
+});
+// Route for RSVP'ing to reviews
+router.post("/:id", async (req, res) => {
+	let reviewId = req.params.id;
+    // Gets session id, will be undefined if user is not logged in
+    let sid = req.cookies.AuthCookie;
+    let user = await users.getUserBySession(sid);
+    let userId = user._id;
+    let savedReviews = user.profile.savedReviews;
+    // User has already RSVP'd to this review
+    if (savedReviews.includes(reviewId)) {
+        let data = {
+            title: "Error 403",
+            issue: "You have already RSVP'd for this review."
+        }
+        res.status(403).render("error", data);
+    }
+    // Add review to user's save list
+    else {
+        savedReviews.push(reviewId);
+        let updatedUser = {profile: user.profile};
+		let newUser = await users.updateUser(userId, updatedUser);
+		console.log(newUser);
+        res.render("success", {title: "Successfully RSVP'd for review!"});
+    }
 });
 
 module.exports = router;

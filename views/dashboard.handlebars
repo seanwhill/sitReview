@@ -29,7 +29,15 @@
                             <tbody>
                                 {{#each reviews_this}}
                                     <tr>
-                                        <td height="100">{{this.date}} {{this.course}}</td>
+                                        <td height="100">{{this.date}} {{this.course}}>
+                                            <!-- One form for rsvp'ing, and another for cancelling -->
+                                            <form id = "rsvp" method = "post" action = "/dashboard/{{this._id}}">
+                                                <button type = "submit">RSVP</button>
+                                            </form>
+                                            <form id = "cancelReservation" method = "post" action = "/dashboard/{{this._id}}/cancel">
+                                                <button type = "submit">Cancel reservation</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 {{/each}}
                             <tbody>
@@ -44,7 +52,15 @@
                             <tbody>
                                 {{#each reviews_next}}
                                     <tr>
-                                        <td height = "100"> {{this.date}} {{this.course}} </td>
+                                        <td height = "100"> {{this.date}} {{this.course}}
+                                            <!-- One form for rsvp'ing, and another for cancelling -->
+                                            <form id = "rsvp" method = "post" action = "/dashboard/{{this._id}}">
+                                                <button type = "submit">RSVP</button>
+                                            </form>
+                                            <form id = "cancelReservation" method = "post" action = "/dashboard/{{this._id}}/cancel">
+                                                <button type = "submit">Cancel reservation</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 {{/each}}
                             </tbody>

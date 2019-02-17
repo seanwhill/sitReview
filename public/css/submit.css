@@ -5,20 +5,21 @@
 .navbar-fixed-top {height: 60px;}
 
 .navbar-brand{
-    color: red
+	color: #a32638;
 }
 li{
 	border-right: 1px solid black;
 	color:black;
 }
 .active a, .dropdown a{
-    color: red !important;
+	color: #a32638;
 }
 tr {
 	background:rgb(207, 203, 203);
 }
+
 tr:hover { 
-	background: red; 
+	background: #a32638; 
 }
 h1, h2 {
 	font-style: italic;

@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 		let data = {
 			title: "Profile",
 			review: userReviews,
-			layout: "main"
+			layout: "table"
 		}
 		res.render("profile", data);
 	} else {

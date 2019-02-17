@@ -1,7 +1,23 @@
-<h1>Profile</h1>
-<h2>Saved reviews</h2>
 
-{{#each review}}
-    <p>Title: {{title}}, Description: {{description}}, Course: {{course}}, Location: {{location}}, 
-        Date: {{date}}, Start time: {{startTime}}, Creator name: {{creatorName}}</p>
-{{/each}}
+<div id ="courses">
+    <div class="table-responsive">
+        <h1>Saved Reviews</h1>
+        {{#each review}}
+        <table class="three">
+            <thead>
+                <tr><th colspan="2">{{this.course}}</th></tr>
+            </thead>
+            <tbody>
+                    <tr><td>Title</td><td>{{this.title}}</td>
+                    <tr><td>Location</td><td>{{this.location}}</td>
+                    <tr><td>Date</td><td>{{this.date}}</td>
+                    <tr><td>Time</td><td>{{this.startTime}}</td>
+                    <tr><td>Description</td><td>{{this.description}}</td>
+                    <tr><td>Owner</td><td>{{this.creatorName}}</td>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        {{/each}}
+    </div>
+</div>

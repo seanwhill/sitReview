@@ -68,7 +68,7 @@ router.get("/", async (req, res) => {
 			courses: courses,
 			reviews_this: reviews_this,
 			reviews_next: reviews_next,	
-			layout: 'main'
+			layout: "table"
 		}
 		res.render("dashboard", data);
 	} else {

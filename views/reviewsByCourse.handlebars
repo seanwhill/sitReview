@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-md-5"></div>
+        <div class="col-md-1">
             <h1>{{title}}</h1>
         </div>
-        <div class="col-sm-1">
+        <div class="col-md-1">
             {{#unless subscribed}}
             <!-- form for subscribing to courses -->
             <form id="subscribe-form" class="sub" method="post" action="/course/{{title}}">
@@ -16,24 +17,43 @@
             </form>
             {{/unless}}
         </div>
+        <div class="col-md-5"></div>
     </div>
 
-</div>
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
+    <div id="courses">
+        <div class="table-responsive">
             <h1>Upcoming reviews</h1>
-        </thead>
-        <tbody>
             {{#each review}}
-            <tr>
-                <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
-                    {{this.title}}
-                    <br> {{this.location}} <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
-                    <br>
-                    Created by: {{this.creatorName}} </td>
-            </tr>
+            <table class="three">
+                <thead>
+                    <tr>
+                        <th colspan="2">{{this.course}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Title</td>
+                        <td>{{this.title}}</td>
+                    <tr>
+                        <td>Location</td>
+                        <td>{{this.location}}</td>
+                    <tr>
+                        <td>Date</td>
+                        <td>{{this.date}}</td>
+                    <tr>
+                        <td>Time</td>
+                        <td>{{this.startTime}}</td>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{this.description}}</td>
+                    <tr>
+                        <td>Owner</td>
+                        <td>{{this.creatorName}}</td>
+                </tbody>
+            </table>
+            <br>
+            <br>
             {{/each}}
-        </tbody>
-    </table>
+        </div>
+    </div>
 </div>

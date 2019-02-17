@@ -10,7 +10,7 @@ input[type="text"] {
 .navbar-fixed-top {height: 60px;}
 
 .navbar-brand{
-	color: red
+	color: #a32638;
 }
 
 li{
@@ -22,7 +22,7 @@ tr {
 	background:rgb(207, 203, 203);
 }
 tr:hover { 
-	background: red; 
+	background: #a32638;
 }
 
 #courses { 
@@ -31,7 +31,7 @@ tr:hover {
 }
 
 .active a, .dropdown a{
-    color: red !important;
+	color: #a32638;
 }
 
 li:last-child {
@@ -39,7 +39,7 @@ li:last-child {
 }
 
 h1{
-	color: red;
+	color: #a32638;
 }
 
 head { 

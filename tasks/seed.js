@@ -33,11 +33,11 @@ const main = async () => {
 
   const jord = await users.addUser(un2, name2, hash);
 
-  const rev1 = await reviews.addReview("Test Review", "CS115", "Prepare for the upcoming exam", "NB 102", "2019-02-16", "15:00", sean._id)
+  const rev1 = await reviews.addReview("Test Review", "CS115", "Prepare for the upcoming exam", "NB 102", "2019-02-16", "15:00", jord._id)
 
-  const rev2 = await reviews.addReview("Test Review", "CS115", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "15:00", sean._id)
+  const rev2 = await reviews.addReview("Test Review", "CS115", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "15:00", jord._id)
 
-  const rev3 = await reviews.addReview("Test Review", "MA222", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "19:00", sean._id)
+  const rev3 = await reviews.addReview("Test Review", "MA222", "Prepare for the upcoming exam", "NB 102", "2019-02-19", "19:00", jord._id)
 
   await db.serverConfig.close();
 

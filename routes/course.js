@@ -38,7 +38,7 @@ router.get("/:course", async (req, res) => {
                 title: course,
                 review: reviewsByCourse,
                 subscribed: subscribed,
-                layout: "main"
+                layout: "table"
             }
             res.render("reviewsByCourse", data);
         }

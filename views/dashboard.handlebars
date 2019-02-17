@@ -2,37 +2,36 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4">
-                <div class="table-responsive">
-                    <table id="courses" class="table table-bordered" style="width: 100%;">
-                        <thead>
-                            <h1>Courses</h1>
-                            <p>A list of courses that you are subscribed to</p>
-                        </thead>
-                        <tbody>
-                            {{#each courses}}
-                            <tr onclick="window.location='/course/{{this}}'">
-                                <td height="10" type="text">{{this}}</td>
-                            </tr>
-                            {{/each}}
-                        <tbody>
-                    </table>
+                <div id = "courses">
+                    <div class="table-responsive">
+                        <table class="three">
+                            <thead>
+                                <h1>Courses</h1>
+                            </thead>
+                            <tbody>
+                                {{#each courses}}
+                                <tr onclick="window.location='/course/{{this}}'">
+                                    <td height="10" type="text">{{this}}</td>
+                                </tr>
+                                {{/each}}
+                            <tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="container-fluid">
+                <div id = "courses">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="three">
                             <thead>
                                 <h1>This Week</h1>
-                                <p>Reviews this week</p>
                             </thead>
                             <tbody>
                                 {{#each reviews_this}}
                                 <tr>
                                     <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
                                         {{this.title}}
-                                        <br> {{this.date}} <br> Starting at: {{this.startTime}} <br>
-                                        {{this.description}}
+                                        <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
                                         <br> Created by: {{this.owner}} <br>
                                         <!-- One form for rsvp'ing, and another for cancelling -->
                                         {{#unless this.reserved}}
@@ -42,8 +41,7 @@
                                         </form>
                                         {{else}}
                                         You have reserved a spot in this event.
-                                        <form id="cancelReservation" method="post"
-                                            action="/dashboard/{{this._id}}/cancel">
+                                        <form id="cancelReservation" method="post" action="/dashboard/{{this._id}}/cancel">
                                             <button type="submit">Cancel reservation</button>
                                         </form>
                                         {{/unless}}
@@ -55,36 +53,40 @@
                         </table>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <h1>Next Week</h1>
-                            <p>Reviews next week</p>
-                        </thead>
-                        <tbody>
-                            {{#each reviews_next}}
-                            <tr>
-                                <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
-                                    {{this.title}}
-                                    <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
-                                    <br>
-                                    Created by: {{this.owner}} <br>Reserved?: {{this.reserved}}
-                                    <!-- One form for rsvp'ing, and another for cancelling -->
-                                    {{#unless this.reserved}}
-                                    <form id="rsvp" method="post" action="/dashboard/{{this._id}}">
-                                        <button type="submit">RSVP</button>
-                                    </form>
-                                    {{else}}
-                                    <form id="cancelReservation" method="post" action="/dashboard/{{this._id}}/cancel">
-                                        <button type="submit">Cancel reservation</button>
-                                    </form>
-                                    {{/unless}}
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
+                <div id="courses">
+                    <div class="table-responsive">
+                        <table class="three">
+                            <thead>
+                                <h1>Next Week</h1>
+                            </thead>
+                            <tbody>
+                                {{#each reviews_next}}
+                                <tr>
+                                    <td height="100" , font-size="8px" , font-weight="bold">{{this.course}} <br>
+                                        {{this.title}}
+                                        <br> {{this.date}} <br> Starting at: {{this.startTime}} <br> {{this.description}}
+                                        <br>
+                                        Created by: {{this.owner}} <br>
+                                        <!-- One form for rsvp'ing, and another for cancelling -->
+                                        {{#unless this.reserved}}
+                                        You are not reserved for this event.
+                                        <form id="rsvp" method="post" action="/dashboard/{{this._id}}">
+                                            <button type="submit">RSVP</button>
+                                        </form>
+                                        {{else}}
+                                        You have reserved a spot in this event.
+                                        <form id="cancelReservation" method="post" action="/dashboard/{{this._id}}/cancel">
+                                            <button type="submit">Cancel reservation</button>
+                                        </form>
+                                        {{/unless}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>

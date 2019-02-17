@@ -40,4 +40,4 @@ if you want to seed the databse: npm run seed
 
 * Professor Hercules
 * Hack Nyu 2019
-* Michelle
+* Michelle Wen

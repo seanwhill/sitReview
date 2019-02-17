@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-1">
@@ -17,6 +18,25 @@
             {{/unless}}
         </div>
     </div>
+=======
+<h1>{{title}}</h1>
+<p>All reviews for {{title}} will be displayed here. Clicking Subscribe will 
+    display this course's reviews on your dashboard.
+</p>
+{{#unless subscribed}}
+<!-- form for subscribing to courses -->
+<p>You have not subscribed to this class.</p>
+<form id = "subscribe-form" method = "post" action = "/course/{{title}}">
+    <button type = "submit">Subscribe</button>
+</form>
+{{else}}
+<!-- form for unsubscribing -->
+<p>You are currently subscribed to this class.</p>
+<form id = "unsubscribe-form" method = "post" action = "/course/{{title}}/unsubscribe">
+    <button type = "submit">Unsubscribe</button>
+</form>
+{{/unless}}
+>>>>>>> b1e6842da6dc90347681bcbe0c7ac57451f2a7e8
 
 </div>
 <div class="table-responsive">

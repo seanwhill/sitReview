@@ -86,6 +86,7 @@ let exportedMethods = {
         username: username,
         courses: [],
         createdReviews: [],
+        savedReviews: []
       },
       sessionIds: [],
     };

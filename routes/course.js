@@ -43,6 +43,7 @@ router.get("/:course", async (req, res) => {
             res.render("reviewsByCourse", data);
         }
     } catch (e) {
+        // I don't know if this ever gets accessed
         res.status(404).json({ message: "Course not found" });
     }
   });
@@ -58,7 +59,8 @@ router.post("/:course", async (req, res) => {
     if (userCourses.includes(course)) {
         let data = {
             title: "Error 403",
-            issue: "You have already added this course."
+            issue: "You have already added this course.",
+            layout: "main"
         }
         res.status(403).render("error", data);
     }

@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
 	res.cookie("AuthCookie", "", {expires: new Date()});
 	res.clearCookie("AuthCookie");
 	await users.deleteSession(sid);
-	res.render("logout", {title: "Logged out"});
+	res.render("logout", {title: "Logged out", layout: "main"});
 });
 
 module.exports = router;

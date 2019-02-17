@@ -74,7 +74,8 @@ router.get("/", async (req, res) => {
 	} else {
 		let data = {
 			title: "Error 403",
-			issue: "You are not logged in."
+			issue: "You are not logged in.",
+			layout: "main"
 		}
 		res.render("error", data);
 	}
@@ -91,7 +92,8 @@ router.post("/:id", async (req, res) => {
     if (savedReviews.includes(reviewId)) {
         let data = {
             title: "Error 403",
-            issue: "You have already RSVP'd for this review."
+			issue: "You have already RSVP'd for this review.",
+			layout: "main"
         }
         res.status(403).render("error", data);
     }
@@ -100,7 +102,7 @@ router.post("/:id", async (req, res) => {
         savedReviews.push(reviewId);
         let updatedUser = {profile: user.profile};
 		let newUser = await users.updateUser(userId, updatedUser);
-        res.render("success", {title: "Successfully RSVP'd for review!"});
+        res.render("success", {title: "Successfully RSVP'd for review!", layout: "main"});
     }
 });
 // Opposite of rsvp
@@ -116,13 +118,14 @@ router.post("/:id/cancel", async (req, res) => {
 		savedReviews.splice(savedReviews.indexOf(reviewId), 1);
         let updatedUser = {profile: user.profile};
 		let newUser = await users.updateUser(userId, updatedUser);
-		res.render("success", {title: "Successfully cancelled reservation!"});
+		res.render("success", {title: "Successfully cancelled reservation!", layout: "main"});
     }
     // Error page, has not rsvp'd yet
     else {
 		let data = {
             title: "Error 403",
-            issue: "You have not RSVP'd for this review yet. Can you even get here?"
+			issue: "You have not RSVP'd for this review yet. Can you even get here?",
+			layout: "main"
         }
         res.status(403).render("error", data);
     }

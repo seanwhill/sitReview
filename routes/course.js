@@ -13,7 +13,8 @@ router.get("/:course", async (req, res) => {
         if (!reviewsByCourse.length) {
             let data = {
                 title: "Error 404",
-                issue: "There are no reviews for that course."
+                issue: "There are no reviews for that course.",
+                layout: "main"
             }
             res.status(404).render("error", data);
         }
@@ -36,11 +37,13 @@ router.get("/:course", async (req, res) => {
             let data = {
                 title: course,
                 review: reviewsByCourse,
-                subscribed: subscribed
+                subscribed: subscribed,
+                layout: "main"
             }
             res.render("reviewsByCourse", data);
         }
     } catch (e) {
+        // I don't know if this ever gets accessed
         res.status(404).json({ message: "Course not found" });
     }
   });
@@ -56,7 +59,8 @@ router.post("/:course", async (req, res) => {
     if (userCourses.includes(course)) {
         let data = {
             title: "Error 403",
-            issue: "You have already added this course."
+            issue: "You have already added this course.",
+            layout: "main"
         }
         res.status(403).render("error", data);
     }
@@ -65,7 +69,7 @@ router.post("/:course", async (req, res) => {
         userCourses.push(course);
         let updatedUser = {profile: user.profile};
         let newUser = await users.updateUser(userId, updatedUser);
-        res.render("success", {title: "Course successfully added!"});
+        res.render("success", {title: "Course successfully added!", layout: "main"});
     }
 });
 // Route for unsubscribing from courses
@@ -81,13 +85,14 @@ router.post("/:course/unsubscribe", async (req, res) => {
         userCourses.splice(userCourses.indexOf(course), 1);
         let updatedUser = {profile: user.profile};
         let newUser = await users.updateUser(userId, updatedUser);
-        res.render("success", {title: "Course successfully removed!"});
+        res.render("success", {title: "Course successfully removed!", layout: "main"});
     }
     // User has never added that course
     else {
         let data = {
             title: "Error 403",
-            issue: "You are not currently subscribed to this course."
+            issue: "You are not currently subscribed to this course.",
+            layout: "main"
         }
         res.status(403).render("error", data);
     }

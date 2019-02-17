@@ -28,13 +28,15 @@ router.get("/", async (req, res) => {
 
 		let data = {
 			title: "Profile",
-			review: userReviews
+			review: userReviews,
+			layout: "main"
 		}
 		res.render("profile", data);
 	} else {
 		let data = {
 			title: "Error 403",
-			issue: "You are not logged in."
+			issue: "You are not logged in.",
+			layout: "main"
 		}
 		res.render("error", data);
 	}

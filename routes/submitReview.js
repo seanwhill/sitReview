@@ -24,7 +24,8 @@ router.get("/", async (req, res) => {
 	} else {
 		let data = {
 			title: "Error 403",
-			issue: "You are not logged in."
+			issue: "You are not logged in.",
+			layout: "main"
 		}
 		res.render("error", data);
 	}
@@ -46,7 +47,7 @@ router.post("/", async (req, res) => {
 	// Add a new review to the collection
 	await reviews.addReview(title, course, description, location, date, startTime, creatorId);
 	// Redirect to success page
-	res.render("success", {title: "Review successfully submitted!"});
+	res.render("success", {title: "Review successfully submitted!", layout: "main"});
     //res.redirect("/dashboard");
 });
 module.exports = router;

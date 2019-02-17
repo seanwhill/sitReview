@@ -1,10 +1,19 @@
+<h1>{{title}}</h1>
 <p>All reviews for {{title}} will be displayed here. Clicking Subscribe will 
     display this course's reviews on your dashboard.
 </p>
+{{#unless subscribed}}
 <!-- form for subscribing to courses -->
 <form id = "subscribe-form" method = "post" action = "/course/{{title}}">
     <button type = "submit">Subscribe</button>
 </form>
+{{else}}
+<!-- form for unsubscribing -->
+<form id = "unsubscribe-form" method = "post" action = "/course/{{title}}/unsubscribe">
+    <button type = "submit">Unsubscribe</button>
+</form>
+{{/unless}}
+
 <!-- Displays that classes reviews -->
 <h2>Reviews</h2>
 {{#each review}}

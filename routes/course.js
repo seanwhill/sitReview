@@ -5,8 +5,6 @@ const users = require("../data/users");
 
 // Route for displaying all reviews by course, assumes user is logged in
 router.get("/:course", async (req, res) => {
-    // Authentication
-    
     try {
         let course = req.params.course;
         // Gets all reviews by course
@@ -20,6 +18,15 @@ router.get("/:course", async (req, res) => {
             res.status(404).render("error", data);
         }
         else {
+            // Checks if the user is subscribed to the course or not
+            let sid = req.cookies.AuthCookie;
+            let loggedUser = await users.getUserBySession(sid);
+            let userCourses = loggedUser.profile.courses;
+            let subscribed = false;
+            // Updates subscribed if user is in course
+            if (userCourses.includes(course)) {
+                subscribed = true;
+            }
             // Gets the name of each review's creator
             for (let i = 0; i < reviewsByCourse.length; i++) {
                 let user = await users.getUserById(reviewsByCourse[i].ownerId);
@@ -28,7 +35,8 @@ router.get("/:course", async (req, res) => {
             // Renders a separate page with the given course
             let data = {
                 title: course,
-                review: reviewsByCourse
+                review: reviewsByCourse,
+                subscribed: subscribed
             }
             res.render("reviewsByCourse", data);
         }

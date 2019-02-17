@@ -21,6 +21,17 @@ li{
 	color:black;
 }
 
+tr {
+	background:rgb(207, 203, 203);
+}
+tr:hover { 
+	background: red; 
+}
+
+#courses { 
+	font-size: 35px;
+	text-align: center;
+}
 
 .active a, .dropdown a{
     color: red !important;

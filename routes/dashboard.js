@@ -39,9 +39,10 @@ router.get("/", async (req, res) => {
 		for (var i = 0; i < courses.length; i++){
 			var temp = await reviews.getReviewsByCourse(courses[i])
 			for (var j = 0; j < temp.length; j++){
-				review = temp[j];
+				review = temp[j]
+				let user = await users.getUserById(review.ownerId);
+				review.owner = user.profile.name;
 				var rev_date = new Date(review.date+'T12:00:00');
-
 
 				if (rev_date.valueOf() >= firstday.valueOf() && rev_date.valueOf() <= lastday.valueOf()) {
 					reviews_this.push(review);
@@ -49,6 +50,7 @@ router.get("/", async (req, res) => {
 				else if(rev_date.valueOf() >= firstday_next.valueOf() && rev_date.valueOf() <= lastday_next.valueOf()){
 					reviews_next.push(review);
 				}
+				
 			}
 		}
 		let data = {

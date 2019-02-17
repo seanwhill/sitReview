@@ -9,7 +9,7 @@
     "seed": "node ./tasks/seed.js",
     "moveup": "node ./tasks/moveup.js"
   },
-  "author": "Gabrielle Padriga 10416101",
+  "author": "Sean Hill, and Jordan Tantuico",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.2",

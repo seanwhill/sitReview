@@ -11,14 +11,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 Node js
 Mongo DB
-```
-Give examples
-```
 
 ### Installing
 
 run npm install to download all of the necessary packages 
 
+## Run The Web app
+
+run npm start to launch the website locally
+if you want to seed the databse: npm run seed
 
 ## Built With
 

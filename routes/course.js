@@ -5,6 +5,8 @@ const users = require("../data/users");
 
 // Route for displaying all reviews by course, assumes user is logged in
 router.get("/:course", async (req, res) => {
+    // Authentication
+    
     try {
         let course = req.params.course;
         // Gets all reviews by course
@@ -34,7 +36,7 @@ router.get("/:course", async (req, res) => {
         res.status(404).json({ message: "Course not found" });
     }
   });
-
+// Route for subscribing to courses
 router.post("/:course", async (req, res) => {
     let course = req.params.course;
     // Gets session id, will be undefined if user is not logged in
@@ -56,6 +58,30 @@ router.post("/:course", async (req, res) => {
         let updatedUser = {profile: user.profile};
         let newUser = await users.updateUser(userId, updatedUser);
         res.render("success", {title: "Course successfully added!"});
+    }
+});
+// Route for unsubscribing from courses
+router.post("/:course/unsubscribe", async (req, res) => {
+    let course = req.params.course;
+    // Gets session id, will be undefined if user is not logged in
+    let sid = req.cookies.AuthCookie;
+    let user = await users.getUserBySession(sid);
+    let userId = user._id;
+    let userCourses = user.profile.courses;
+    // Unsubscribe from course
+    if (userCourses.includes(course)) {
+        userCourses.splice(userCourses.indexOf(course), 1);
+        let updatedUser = {profile: user.profile};
+        let newUser = await users.updateUser(userId, updatedUser);
+        res.render("success", {title: "Course successfully removed!"});
+    }
+    // User has never added that course
+    else {
+        let data = {
+            title: "Error 403",
+            issue: "You are not currently subscribed to this course."
+        }
+        res.status(403).render("error", data);
     }
 });
 
